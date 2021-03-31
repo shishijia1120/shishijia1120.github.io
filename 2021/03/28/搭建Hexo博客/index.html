@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>搭建Hexo博客 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="搭建Hexo博客 的填坑之路······ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  参考  hexo官方文档：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;index.html 超详细Hexo+Github博客搭建小白教程 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建Hexo博客">
+<meta property="og:url" content="http://example.com/2021/03/28/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="搭建Hexo博客 的填坑之路······ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  参考  hexo官方文档：https:&#x2F;&#x2F;hexo.io&#x2F;zh-cn&#x2F;docs&#x2F;index.html 超详细Hexo+Github博客搭建小白教程 https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;3">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-28T03:19:24.000Z">
+<meta property="article:modified_time" content="2021-03-28T03:20:40.914Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-搭建Hexo博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/28/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2021-03-28T03:19:24.000Z" itemprop="datePublished">2021-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      搭建Hexo博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="搭建Hexo博客-的填坑之路······"><a href="#搭建Hexo博客-的填坑之路······" class="headerlink" title="搭建Hexo博客 的填坑之路······"></a>搭建Hexo博客 的填坑之路······</h1><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<p>参考</p>
+<ul>
+<li>hexo官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">https://hexo.io/zh-cn/docs/index.html</a></li>
+<li>超详细Hexo+Github博客搭建小白教程 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35668237">https://zhuanlan.zhihu.com/p/35668237</a><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><h3 id="安装前提"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提</h3></li>
+<li>Node.js（Node.js版本需不低于8.10,建议使用Node.js 10.0及以上版本）</li>
+<li>Git</li>
+</ul>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>   安装前确保已经安装好node.js和Git环境。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul>
+<li>使用<code>$ npm install -g hexo-cli</code>安装太慢</li>
+<li>改用<code>$ cnpm install -g hexo-cli</code>安装过程中，由于我的node版本是v6.11.3，一直会提醒我node&gt;=8，安装完毕后，输入<code>$ hexo -v</code>，报错：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;hexo -v</span><br><span class="line">G:\environment\node\node_global\node_modules\hexo-cli\node_modules\_chokidar@3.3.1@chokidar\index.js:151</span><br><span class="line">  async remove(item) &#123;</span><br><span class="line">        ^^^^^^</span><br><span class="line"></span><br><span class="line">SyntaxError: Unexpected identifier</span><br><span class="line">    at createScript (vm.js:56:10)</span><br><span class="line">    at Object.runInThisContext (vm.js:97:10)</span><br><span class="line">    at Module._compile (module.js:542:28)</span><br><span class="line">    at Object.Module._extensions..js (module.js:579:10)</span><br><span class="line">    at Module.load (module.js:487:32)</span><br><span class="line">    at tryModuleLoad (module.js:446:12)</span><br><span class="line">    at Function.Module._load (module.js:438:3)</span><br><span class="line">    at Module.require (module.js:497:17)</span><br><span class="line">    at require (internal&#x2F;module.js:20:19)</span><br><span class="line">    at Object.&lt;anonymous&gt; (G:\environment\node\node_global\node_modules\hexo-cli\node_modules\_hexo-fs@2.0.0@hexo-fs\lib\fs.js:6:18)</span><br><span class="line">    at Module._compile (module.js:570:32)</span><br><span class="line">    at Object.Module._extensions..js (module.js:579:10)</span><br><span class="line">    at Module.load (module.js:487:32)</span><br><span class="line">    at tryModuleLoad (module.js:446:12)</span><br><span class="line">    at Function.Module._load (module.js:438:3)</span><br><span class="line">    at Module.require (module.js:497:17)</span><br></pre></td></tr></table></figure>
+百度检查hexo版本报错后，没有得到什么答案，又百度node.js版本过低影响安装hexo吗？<br>一直没有搜索到相关的答案，决定尝试更新node.js版本！！！<h3 id="升级（重新安装）Node-js"><a href="#升级（重新安装）Node-js" class="headerlink" title="升级（重新安装）Node.js"></a>升级（重新安装）Node.js</h3>百度说，在windows下是没有n模块，不支持通过n模块来更新node.js。只能重新安装node.js</li>
+</ul>
+<ol>
+<li>在命令行窗口输入where node，查看现在Node版本安装的路径</li>
+<li>在node官网下载与你电脑系统对应的最新的版本，安装地址一定要覆盖原版本的地址</li>
+<li>在命令行输入node -v，查看版本是否更新成功<h3 id="再次安装hexo"><a href="#再次安装hexo" class="headerlink" title="再次安装hexo"></a>再次安装hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo -v</span><br></pre></td></tr></table></figure>
+成功！！！</li>
+</ol>
+<h3 id="进阶安装和使用"><a href="#进阶安装和使用" class="headerlink" title="进阶安装和使用"></a>进阶安装和使用</h3><p>对于熟悉npm的进阶用户，可以仅局部安装hexo包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
+<p>安装以后，可以使用以下两种方式执行Hexo:</p>
+<ol>
+<li><code>npx hexo &lt;command&gt;</code></li>
+<li>将Hexo所在的目录下的node_modules添加到环境变量之中即可直接使用<code>hexo &lt;command&gt;</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#39;PATH&#x3D;&quot;$PATH:.&#x2F;node_modules&#x2F;.bin&quot;&#39; &gt;&gt; ~&#x2F;.profile</span><br></pre></td></tr></table></figure>
+<h2 id="2-本地搭建hexo博客"><a href="#2-本地搭建hexo博客" class="headerlink" title="2. 本地搭建hexo博客"></a>2. 本地搭建hexo博客</h2>安装Hexo完成后，新建文件夹。在该文件夹右键 git bash here<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
+完成之后输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br><span class="line">$ hexo g &#x2F;&#x2F;生成静态网页</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server &#x2F;&#x2F;打开本地服务器</span><br></pre></td></tr></table></figure>
+之后，浏览器访问<a href="http://localhost:4000，即可看到hexo博客页面。">http://localhost:4000，即可看到hexo博客页面。</a></li>
+</ol>
+<p>但我又失败了，访问<a href="http://localhost，显示无法访问网站。这个问题又搜索不到原因？？？？">http://localhost，显示无法访问网站。这个问题又搜索不到原因？？？？</a></p>
+<p>最后再看hexo官方文档，在基本操作/服务器中，发现文档中写：</p>
+<blockquote>
+<p>Hexo 3.0 把服务器独立成了个别模块，您必须先安装 hexo-server 才能使用。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-server --save</span><br></pre></td></tr></table></figure>
+<p>再次打开服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server &#x2F;&#x2F;打开本地服务器</span><br></pre></td></tr></table></figure>
+<p>终于成功！！!</p>
+<p>新建完成后，指定文件夹的目录如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
+<h2 id="3-将博客托管到Github上"><a href="#3-将博客托管到Github上" class="headerlink" title="3.将博客托管到Github上"></a>3.将博客托管到Github上</h2><p>打开博客根目录下的_config.yml文件，这是博客的配置文件，可以修改与博客相关的各种信息。<br>修改配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https:&#x2F;&#x2F;github.com&#x2F;username&#x2F;username.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>reository修改为你自己的github地址</p>
+<h3 id="写文章、发布文章"><a href="#写文章、发布文章" class="headerlink" title="写文章、发布文章"></a>写文章、发布文章</h3><p>在博客根目录下右键git bash，安装一个扩展<code>npm i hexo-deployer-git</code><br>输入<code>hexo new post &lt;title&gt;</code>，新建一篇文章。<br>再打开博客目录，可以发现多了一个文件夹和一个.md文件，用来存放图片，和编写markdown文件。<br>编写完markdown文件后，根目录输入hexo g 生成静态网页，然后输入hexo s可以本地预览效果，最后输入hexo d上传到github上。这是打开你的github.io主页就能看到发布的文章了。</p>
+<h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>现在默认域名是xxx.github.io，如果像弄一个专属域名。购买完域名后，打开github博客项目，点击settings，拉到下面Custom domain处。填上自己的域名这时候你的项目根目录应该会出现一个名为CNAME的文件了。如果没有的话，打开你本地博客/source目录，我的是D:\study\program\blog\source，新建CNAME文件，注意没有后缀。然后在里面写上你的域名，保存。最后运行hexo g、hexo d上传到github。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/28/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/" data-id="ckmunmoi40005pcuuf1w61qko" data-title="搭建Hexo博客" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/28/%E5%AF%B9%E8%B1%A1%E3%80%81%E7%B1%BB%E4%B8%8E%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          对象、类与面对对象编程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/28/test-first-article/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">test first article</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/">书籍笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B%E7%9A%84Python/">流程的Python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/">JavaScript微软官方教程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/">流畅的Python</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E5%AF%B9%E8%B1%A1%E3%80%81%E7%B1%BB%E4%B8%8E%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">对象、类与面对对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/">搭建Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/test-first-article/">test first article</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

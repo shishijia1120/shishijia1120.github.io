@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>JavaScript微软官方教程 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;beginners-intro-javascript-node https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript   Functions: 5 Things To Know!1. Basic: What are Functions? 函数是基本的代码块，用来执行一系列语句，将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript微软官方教程">
+<meta property="og:url" content="http://example.com/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="https:&#x2F;&#x2F;github.com&#x2F;microsoft&#x2F;beginners-intro-javascript-node https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;JavaScript   Functions: 5 Things To Know!1. Basic: What are Functions? 函数是基本的代码块，用来执行一系列语句，将">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-29T13:53:21.000Z">
+<meta property="article:modified_time" content="2021-03-29T13:55:44.370Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript微软官方教程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-03-29T13:53:21.000Z" itemprop="datePublished">2021-03-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JavaScript/">JavaScript</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      JavaScript微软官方教程
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/beginners-intro-javascript-node">https://github.com/microsoft/beginners-intro-javascript-node</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">https://developer.mozilla.org/en-US/docs/Web/JavaScript</a></li>
+</ul>
+</blockquote>
+<h2 id="Functions-5-Things-To-Know"><a href="#Functions-5-Things-To-Know" class="headerlink" title="Functions: 5 Things To Know!"></a>Functions: 5 Things To Know!</h2><h3 id="1-Basic-What-are-Functions"><a href="#1-Basic-What-are-Functions" class="headerlink" title="1. Basic: What are Functions?"></a>1. Basic: What are Functions?</h3><ul>
+<li>函数是基本的代码块，用来执行一系列语句，将它们抽象为一个可复用函数，会得到两个好处。可读性和复用性、可维护性。</li>
+</ul>
+<h3 id="2-Syntax-Define-amp-Invoke-your-functions"><a href="#2-Syntax-Define-amp-Invoke-your-functions" class="headerlink" title="2.  Syntax: Define &amp; Invoke your functions"></a>2.  Syntax: Define &amp; Invoke your functions</h3><ul>
+<li><code>function</code>  keyword</li>
+<li><code>funtion name</code>  is used to invoke functions</li>
+<li><code>funtion parameters</code> are placeholders for input</li>
+<li>closing <code>brace</code> terminates function(if no return statements are encountered)</li>
+<li>function <code>return</code>  defines exit points,placeholder for output(result) data.</li>
+</ul>
+<h3 id="3-Naming-Conventions-amp-Tips"><a href="#3-Naming-Conventions-amp-Tips" class="headerlink" title="3. Naming: Conventions &amp; Tips"></a>3. Naming: Conventions &amp; Tips</h3><h4 id="Like-variable-name-conventions"><a href="#Like-variable-name-conventions" class="headerlink" title="Like variable name conventions"></a>Like variable name conventions</h4><ul>
+<li>Use alphabets,numbers,$and_</li>
+<li>No other special characters allowed.</li>
+</ul>
+<h4 id="Function-“-name”-property"><a href="#Function-“-name”-property" class="headerlink" title="Function “.name” property"></a>Function “.name” property</h4><ul>
+<li>returns the name of the function</li>
+<li>returns “anonymous” for anonymous functions</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sayHello.name);	<span class="comment">//sayHello</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Anonymous-functions"><a href="#Anonymous-functions" class="headerlink" title="Anonymous functions"></a>Anonymous functions</h4><ul>
+<li>no covered in this module</li>
+</ul>
+<h3 id="4-Parameters-Providing-inputs"><a href="#4-Parameters-Providing-inputs" class="headerlink" title="4. Parameters: Providing inputs"></a>4. Parameters: Providing inputs</h3><h4 id="Are-placeholders-for-input-values"><a href="#Are-placeholders-for-input-values" class="headerlink" title="Are placeholders for input values"></a>Are placeholders for input values</h4><h4 id="Arguments-type-numbers-are-not-checked-against-definitions"><a href="#Arguments-type-numbers-are-not-checked-against-definitions" class="headerlink" title="Arguments type/numbers are not checked against definitions"></a>Arguments type/numbers are not checked against definitions</h4><ul>
+<li>Missing values will be set to undefined!</li>
+<li>This can have unanticipated results if you don’t validate your arguments within the funtion.</li>
+</ul>
+<h3 id="5-Return-Providing-outputs-exit-points"><a href="#5-Return-Providing-outputs-exit-points" class="headerlink" title="5. Return: Providing outputs,exit points"></a>5. Return: Providing outputs,exit points</h3><h4 id="Exit-point-for-functions"><a href="#Exit-point-for-functions" class="headerlink" title="Exit point for functions"></a>Exit point for functions</h4><ul>
+<li><p>The return statement is optional.</p>
+<p>There is an implicit return after the last statement defined within the {}</p>
+</li>
+<li><p>Use return statements to return relevant output (results) to the invoker.</p>
+</li>
+<li><p>if no return statement is defined, the returned result is undefined.</p>
+</li>
+</ul>
+<h2 id="Arrow-Function"><a href="#Arrow-Function" class="headerlink" title="Arrow Function"></a>Arrow Function</h2><ul>
+<li> Changes to the <em>this</em> context</li>
+</ul>
+<ul>
+<li>Support implicit return values</li>
+</ul>
+<ul>
+<li>Must be assigned to a variable, or immediately used</li>
+</ul>
+<ul>
+<li>Reduction in characters typed</li>
+</ul>
+<h3 id="this-context"><a href="#this-context" class="headerlink" title="this context"></a>this context</h3><p>This context in a traditional JavaScript functions is defined where that functions is called, whereas in an arrow function it’s inherited from parent scope.</p>
+<p>？？？？？？</p>
+<ul>
+<li>inherited from parent scope</li>
+<li>Cannot be changed</li>
+<li>Maintained when function is passed as a reference</li>
+</ul>
+<h3 id="Implicit-Return"><a href="#Implicit-Return" class="headerlink" title="Implicit Return"></a>Implicit Return</h3><ul>
+<li><p>Single line functions return statement result</p>
+</li>
+<li><p>Use {} to introduce multiple lines</p>
+</li>
+</ul>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><h3 id="1-What-is-JSON"><a href="#1-What-is-JSON" class="headerlink" title="1. What is JSON?"></a>1. What is JSON?</h3><h4 id="JSON-JavaScript-Object-Notation"><a href="#JSON-JavaScript-Object-Notation" class="headerlink" title="JSON=JavaScript Object Notation"></a>JSON=JavaScript Object Notation</h4><ul>
+<li><p>Language independent and user-readable.</p>
+</li>
+<li><p>Depends only on 2 data structures that are found in all modern programming languages.</p>
+<ul>
+<li><p>Collection of <strong>name-value pairs</strong></p>
+</li>
+<li><p>Ordered list <strong>of values</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>因为键值对只能是单一序列化对象，如果想要在单行字符串装入多个对象，需要使用数组。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2-JSON-Format"><a href="#2-JSON-Format" class="headerlink" title="2. JSON Format"></a>2. JSON Format</h3><ul>
+<li>Data in name-value pairs that are separated by commas</li>
+<li>{} enclose single objects</li>
+<li>[] enclose multi-item arrays</li>
+</ul>
+<h3 id="3-stringify-Serialize-Object-to-JSON"><a href="#3-stringify-Serialize-Object-to-JSON" class="headerlink" title="3. stringify: Serialize Object to JSON"></a>3. stringify: Serialize Object to JSON</h3><ul>
+<li><p>Serialize a JavaScript Object into an equivalent text string</p>
+</li>
+<li><p>Serialize a collection of JavaScript Objects into an ordered list</p>
+</li>
+</ul>
+<h3 id="4-parse-Deserialize-JSON-to-Object"><a href="#4-parse-Deserialize-JSON-to-Object" class="headerlink" title="4. parse: Deserialize JSON to Object"></a>4. parse: Deserialize JSON to Object</h3><ul>
+<li>Deserialize a JSON-formatted text string into a JavaScript object</li>
+<li>Deserialize a JSON-formatted text string into a JavaScript array</li>
+</ul>
+<blockquote>
+<p>如何将JSON转换为函数对象？</p>
+<ul>
+<li>实现的最好方式是用结构体，能够选择序列化的属性和数据，然后转回定义的函数中，要用自定义构造函数。？？？？？</li>
+</ul>
+</blockquote>
+<h2 id="Objects-6-Things-To-Know"><a href="#Objects-6-Things-To-Know" class="headerlink" title="Objects: 6 Things To Know"></a>Objects: 6 Things To Know</h2><h3 id="1-Basics-What-are-Objects"><a href="#1-Basics-What-are-Objects" class="headerlink" title="1. Basics: What are Objects"></a>1. Basics: What are Objects</h3><ul>
+<li>Representations of real world objects-using code!</li>
+<li>JavaScript objects have associated properties</li>
+<li>JavaScript objects have associated methods</li>
+</ul>
+<h3 id="2-Syntax-Object-Definition"><a href="#2-Syntax-Object-Definition" class="headerlink" title="2. Syntax: Object Definition"></a>2. Syntax: Object Definition</h3><ul>
+<li><p>Collection of unordered name=value pairs!</p>
+</li>
+<li><p>This is an example of an object literal</p>
+<p>It’s the easiest way to create a JavaScript object at definition</p>
+<p>Just enclose name-value pairs in {}–separated by commas</p>
+</li>
+<li><p>You can also create objects in other ways</p>
+<p>using what’s called constructors and new keyword</p>
+</li>
+</ul>
+<h3 id="3-Creation-literals-amp-Constructors"><a href="#3-Creation-literals-amp-Constructors" class="headerlink" title="3. Creation: literals &amp; Constructors"></a>3. Creation: literals &amp; Constructors</h3><p>有两种创建对象的方式：使用字面量和构造函数。字面量使用简单，但构造体可以有很多属性，方便让你执行继承之类事情。(原型链)</p>
+<h3 id="4-Properties-Associated-Variables"><a href="#4-Properties-Associated-Variables" class="headerlink" title="4. Properties: Associated Variables"></a>4. Properties: Associated Variables</h3><ul>
+<li><p>Properties have immutable names and mutable values</p>
+<p>Naming uses the same conventions as variables</p>
+</li>
+<li><p>Access Approach 1: Dot notation</p>
+<p>Use: <object>.<name>(like with namespaces)</p>
+</li>
+<li><p>Access Approach 2: Bracket notation</p>
+<p>Use: <object>[“name”] (like with hashmaps)</p>
+</li>
+</ul>
+<h3 id="5-Methods-Associated-Functions"><a href="#5-Methods-Associated-Functions" class="headerlink" title="5. Methods: Associated Functions"></a>5. Methods: Associated Functions</h3><ul>
+<li><p>Methods are special properties whose values are function definitions</p>
+</li>
+<li><p>Access methods just like properties</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ex: book.checkIn gives [<span class="built_in">Function</span>:checkIn]</span><br><span class="line">Ex: book[<span class="string">&quot;checkIn&quot;</span>] gives [<span class="built_in">Function</span>: checkIn]</span><br></pre></td></tr></table></figure></li>
+<li><p>Invoke methods just like functions</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ex: book.checkIn() excutes that method</span><br><span class="line">Ex: book[<span class="string">&quot;checkIn&quot;</span>]() does likewise</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="6-“this”-Associated-Context"><a href="#6-“this”-Associated-Context" class="headerlink" title="6. “this”: Associated Context"></a>6. “this”: Associated Context</h3><blockquote>
+<p><em>this</em> is a keyword that sets the runtime context for the function.</p>
+<p>It’s a way for the function to be able to get access to other data or functions in it’s runtime scope.</p>
+</blockquote>
+<ul>
+<li><p>Functions need access to runtime context.</p>
+<p>(Object) methods may need access to peer property values</p>
+<p>(Standalone) functions may use global variables in execution</p>
+</li>
+<li><p>“this” maps to relevant context at runtime</p>
+<ul>
+<li>Maps to enclosing object– for object methods</li>
+<li>Maps to global–for standalone functions</li>
+<li>May be undefined(strict mode) or changed(e.g., use apply)??????</li>
+</ul>
+</li>
+<li><p>About the global object</p>
+<ul>
+<li><p>defaults to window object in browser runtime</p>
+</li>
+<li><p>defaults to window object in browser runtime</p>
+</li>
+<li><p>use “globalThis” to reference the global object consistently</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>当你在函数中使用this引用函数运行时上下文。</p>
+<ul>
+<li>如果函数存在于对象中，接着this的运行时上下文就会绑定到对象自身；</li>
+<li>如果在对象外使用，运行时上下文会绑定到全局作用域，this就会返回全局对象。</li>
+</ul>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bookObj = &#123;</span><br><span class="line">    checkIn: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;\n\n this is:&quot;</span>,bookObj.checkIn());<span class="comment">//this is: &#123;checkIn:[Function: checkIn]&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(bookObj.checkIn() === globalThis);<span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">anotherCheckIn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;\n\n this is:&quot;</span>,anotherCheckIn());</span><br><span class="line"><span class="built_in">console</span>.log(anotherCheckIn() === globalThis);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/" data-id="ckmunmo930000pcuu1a0ddqnq" data-title="JavaScript微软官方教程" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">流畅的Python</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/">书籍笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B%E7%9A%84Python/">流程的Python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/">JavaScript微软官方教程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/">流畅的Python</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E5%AF%B9%E8%B1%A1%E3%80%81%E7%B1%BB%E4%B8%8E%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">对象、类与面对对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/">搭建Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/test-first-article/">test first article</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

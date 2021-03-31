@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>流畅的Python | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="2 序列构成的数组​    Python中不管是哪种序列数据，字符串、列表、字节序列、数组、XML元素，抑或是数据库查询结果，它们都共用一套丰富操作：迭代、切片、排序，还有拼接。 2.1 内置序列类型概览 容器序列 list、tuple和collections.deque这些序列能存放不同类型的数据。  扁平序列 str、bytes、bytearray、memoryview和array.array">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流畅的Python">
+<meta property="og:url" content="http://example.com/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2 序列构成的数组​    Python中不管是哪种序列数据，字符串、列表、字节序列、数组、XML元素，抑或是数据库查询结果，它们都共用一套丰富操作：迭代、切片、排序，还有拼接。 2.1 内置序列类型概览 容器序列 list、tuple和collections.deque这些序列能存放不同类型的数据。  扁平序列 str、bytes、bytearray、memoryview和array.array">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-29T13:44:22.000Z">
+<meta property="article:modified_time" content="2021-03-29T13:48:55.368Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-流畅的Python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/" class="article-date">
+  <time class="dt-published" datetime="2021-03-29T13:44:22.000Z" itemprop="datePublished">2021-03-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/">书籍笔记</a>►<a class="article-category-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B%E7%9A%84Python/">流程的Python</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      流畅的Python
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="2-序列构成的数组"><a href="#2-序列构成的数组" class="headerlink" title="2 序列构成的数组"></a>2 序列构成的数组</h2><p>​    Python中不管是哪种序列数据，字符串、列表、字节序列、数组、XML元素，抑或是数据库查询结果，它们都共用一套丰富操作：迭代、切片、排序，还有拼接。</p>
+<h3 id="2-1-内置序列类型概览"><a href="#2-1-内置序列类型概览" class="headerlink" title="2.1 内置序列类型概览"></a>2.1 内置序列类型概览</h3><ul>
+<li><p>容器序列</p>
+<p>list、tuple和collections.deque这些序列能存放不同类型的数据。</p>
+</li>
+<li><p>扁平序列</p>
+<p>str、bytes、bytearray、memoryview和array.array，这类序列只能容纳一种类型。</p>
+</li>
+</ul>
+<p>容器序列存放的是它们所包含的任意类型的对象的引用，而扁平序列里存放的是值而不是引用。扁平序列其实是一段连续的内存空间，它里面只能存放诸如字符、字节和数值这种基础类型。</p>
+<p>序列类型还能按照能否被修改来分类。</p>
+<ul>
+<li><p>可变序列</p>
+<p>list、bytearray、array.array、collections.deque和memoryview。</p>
+</li>
+<li><p>不可变序列</p>
+<p>tuple、str和bytes。</p>
+</li>
+</ul>
+<h3 id="2-2-列表推导和生成器表达式"><a href="#2-2-列表推导和生成器表达式" class="headerlink" title="2.2 列表推导和生成器表达式"></a>2.2 列表推导和生成器表达式</h3><p>列表推导是构建列表(list)的快捷方式，而生成器表达式则可以用来创建其他任何类型的序列。</p>
+<h4 id="2-2-1-列表推导和可读性"><a href="#2-2-1-列表推导和可读性" class="headerlink" title="2.2.1 列表推导和可读性"></a>2.2.1 列表推导和可读性</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;symbols = <span class="string">&#x27;abc&#x27;</span></span><br><span class="line">&gt;&gt;&gt;codes = []</span><br><span class="line">&gt;&gt;&gt;<span class="keyword">for</span> symbol <span class="keyword">in</span> symbols:</span><br><span class="line">    codes.append(<span class="built_in">ord</span>(symbol))</span><br><span class="line">//列表推导的写法</span><br><span class="line">&gt;&gt;&gt;codes = [<span class="built_in">ord</span>(symbol) <span class="keyword">for</span> symbol <span class="keyword">in</span> symbols]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用原则：只用列表推导来创建新的列表，并且尽量保持简短，如果列表推导的代码超过了两行，应该考虑是不是用for循环重写了。</li>
+<li>列表推导、生成器表达式，以及同它们很相似的集合(set)推导和字典(dict)推导，在Python3中都有了自己的局部作用域。</li>
+<li>Python会忽略代码里[ ]、{ }和( )中的换行。</li>
+<li>列表推导可以帮助我们把一个序列或是其他可迭代类型中的元素过滤或是加工，然后再新键一个列表。(Python内置的filter和map函数组合起来也能达到这一效果，但可读性不高)。</li>
+</ul>
+<h4 id="2-2-2-列表推导同filter和map的比较"><a href="#2-2-2-列表推导同filter和map的比较" class="headerlink" title="2.2.2 列表推导同filter和map的比较"></a>2.2.2 列表推导同filter和map的比较</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//列表推导</span><br><span class="line">OAOAOA&gt;&gt;&gt;symbols = <span class="string">&#x27;$#abs&#x27;</span></span><br><span class="line">&gt;&gt;&gt;beyond_ascii = [<span class="built_in">ord</span>(s) <span class="keyword">for</span> s <span class="keyword">in</span> symbols <span class="keyword">if</span> <span class="built_in">ord</span>(s) &gt; <span class="number">127</span>]</span><br><span class="line">OAOAOA</span><br><span class="line">//<span class="built_in">filter</span>/<span class="built_in">map</span></span><br><span class="line">&gt;&gt;&gt;beyond_ascii = <span class="built_in">list</span>(<span class="built_in">filter</span>(<span class="keyword">lambda</span> c: c &gt; <span class="number">127</span>,<span class="built_in">map</span>(<span class="built_in">ord</span>,symbols)))</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-3-笛卡儿积"><a href="#2-2-3-笛卡儿积" class="headerlink" title="2.2.3 笛卡儿积"></a>2.2.3 笛卡儿积</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;colors = [<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;white&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;sizes = [<span class="string">&#x27;S&#x27;</span>,<span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;L&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;tshirts = [(color,size) <span class="keyword">for</span> color <span class="keyword">in</span> colors <span class="keyword">for</span> size <span class="keyword">in</span> sizes]</span><br><span class="line">[(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;S&#x27;</span>),(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;M&#x27;</span>),(<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;L&#x27;</span>),(<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;S&#x27;</span>),(<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;M&#x27;</span>),(<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;L&#x27;</span>)]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-4-生成器表达式"><a href="#2-2-4-生成器表达式" class="headerlink" title="2.2.4 生成器表达式"></a>2.2.4 生成器表达式</h4><p>虽然也可以用列表推导来初始化元组、数组或其他序列类型，但是生成器表达式是更好的选择。这是因为生成器表达式背后遵守了迭代器协议，可以逐个地产出元素，而不是先建立一个完整的列表，然后再把这个列表传递到某个构造函数里。前面那种方式显然能够节省内存。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;colors = [<span class="string">&#x27;black&#x27;</span>,<span class="string">&#x27;white&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;sizes = [<span class="string">&#x27;S&#x27;</span>,<span class="string">&#x27;M&#x27;</span>,<span class="string">&#x27;L&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;<span class="keyword">for</span> tshirt <span class="keyword">in</span> (<span class="string">&#x27;%s %s&#x27;</span> %(c,s) <span class="keyword">for</span> c <span class="keyword">in</span> colors <span class="keyword">for</span> s <span class="keyword">in</span> sizes):</span><br><span class="line">    <span class="built_in">print</span>(tshirt)</span><br></pre></td></tr></table></figure>
+
+<p>生成器表达式逐个产出元素，从来不会一次性产出一个含有6个样式的列表。</p>
+<h3 id="2-3-元组不仅仅是不可表的列表"><a href="#2-3-元组不仅仅是不可表的列表" class="headerlink" title="2.3 元组不仅仅是不可表的列表"></a>2.3 元组不仅仅是不可表的列表</h3><h4 id="2-3-1-元组和记录"><a href="#2-3-1-元组和记录" class="headerlink" title="2.3.1 元组和记录"></a>2.3.1 元组和记录</h4><p>如果只把元组理解为不可变的列表，那其他信息——它所包含的元素的总数和它们的位置——似乎变得可有可无。但是如果元组当作一些字段的集合，那么数量和位置信息就变得非常重要了。</p>
+<p>如果在任何表达式里我们在元组内对元素排序，这些元素所携带的信息就会丢失，因为这些信息是跟它们的位置有关的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;lax_coordinates = (<span class="number">33.9425</span>,-<span class="number">118.408056</span>)</span><br><span class="line">&gt;&gt;&gt;city,year,pop,chg,area = (<span class="string">&#x27;Tokyo&#x27;</span>,<span class="number">2003</span>,<span class="number">0.66</span>,<span class="number">8014</span>)</span><br><span class="line">&gt;&gt;&gt;traveler_ids = [(<span class="string">&#x27;USA&#x27;</span>,<span class="string">&#x27;331195855&#x27;</span>),(<span class="string">&#x27;BRA&#x27;</span>,<span class="string">&#x27;CE342567&#x27;</span>),(<span class="string">&#x27;ESP&#x27;</span>,<span class="string">&#x27;XDA205856&#x27;</span>)]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="keyword">for</span> passport <span class="keyword">in</span> <span class="built_in">sorted</span>(traveler_ids):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;%s / %s&#x27;</span> %passport)</span><br><span class="line">...</span><br><span class="line">BRA/ce342567</span><br><span class="line">ESP/<span class="number">31195855</span></span><br><span class="line">USA/<span class="number">31195855</span>	</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;<span class="keyword">for</span> country,_ <span class="keyword">in</span> traveler_ids:</span><br><span class="line">    <span class="built_in">print</span>(country)</span><br><span class="line">USA</span><br><span class="line">BRA</span><br><span class="line">ESP</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-2-元组拆包"><a href="#2-3-2-元组拆包" class="headerlink" title="2.3.2 元组拆包"></a>2.3.2 元组拆包</h4><p>元组拆包可以应用到任何可迭代对象上，唯一的硬性要求是，被可迭代对象中的元素数量必须要跟接受这些元素的元组的空档数一致。除非我们用*来表示忽略多余的元素。</p>
+<p>平行赋值:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;lax_coordinates = (<span class="number">33.9425</span>,-<span class="number">118.408056</span>)</span><br><span class="line">&gt;&gt;&gt;latitude,longitude = lax_coordinates <span class="comment">#元组拆包</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>不使用中间变量交换两个变量的值:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b,a = a,b</span><br></pre></td></tr></table></figure></li>
+<li><p>使用*运算符把一个可迭代对象拆开作为函数的参数:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">divmod</span>(<span class="number">20</span>,<span class="number">8</span>)</span><br><span class="line">(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">&gt;&gt;&gt;t = (<span class="number">20</span>,<span class="number">8</span>)</span><br><span class="line">&gt;&gt;&gt;<span class="built_in">divmod</span>(*t)</span><br><span class="line">(<span class="number">2</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>使用_占位符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">&gt;&gt;&gt;_,filename = os.path.split(<span class="string">&#x27;/home/luciano/.ssh/idrsa.pub&#x27;</span>)</span><br><span class="line">&gt;&gt;&gt;filename</span><br><span class="line"><span class="string">&#x27;idrsa.pub&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>使用*来处理剩下的元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a,b,*rest = <span class="built_in">range</span>(<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a,b,rest</span><br><span class="line">(<span class="number">0</span>,<span class="number">1</span>,[<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<p>在平行赋值中，*前缀只能用在一个变量名前面，但是这个变量可以出现在赋值表达式的任意位置:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a,*body,c,d = <span class="built_in">range</span></span><br><span class="line">&gt;&gt;&gt;a,body,c,d</span><br><span class="line">(<span class="number">0</span>,[<span class="number">1</span>,<span class="number">2</span>],<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2-3-3-嵌套元组拆包"><a href="#2-3-3-嵌套元组拆包" class="headerlink" title="2.3.3 嵌套元组拆包"></a>2.3.3 嵌套元组拆包</h4><p>接受表达式的元组可以是嵌套式的，例如(a,b,(c,d))。只要这个接受元组的嵌套结构符合表达式本身的嵌套结构，Python就可以作出正确的对应。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">metro_areas = [</span><br><span class="line">    (<span class="string">&#x27;Tokyo&#x27;</span>,<span class="string">&#x27;JP&#x27;</span>,<span class="number">36.933</span>,(<span class="number">35.689722</span>,<span class="number">139.691667</span>)),</span><br><span class="line">    .......</span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> name,cc,pop,(latitude,longitude) <span class="keyword">in</span> metro_areas:</span><br><span class="line">    <span class="built_in">print</span>(fmt.<span class="built_in">format</span>(name,latitude,longitude))</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-4-具名元组"><a href="#2-3-4-具名元组" class="headerlink" title="2.3.4 具名元组"></a>2.3.4 具名元组</h4><p>。。。</p>
+<h4 id="2-3-5-作为不可变列表的元组"><a href="#2-3-5-作为不可变列表的元组" class="headerlink" title="2.3.5 作为不可变列表的元组"></a>2.3.5 作为不可变列表的元组</h4><p>除了跟增减元素相关的方法之外，元组支持列表的其他所有方法。例外，元组没有___reversed__方法，但是这个方法只是个优化而已，reversed(my_tuple)这个用法在没有__reversed__的情况下也是合法的。</p>
+<p>。。。</p>
+<h3 id="2-4-切片"><a href="#2-4-切片" class="headerlink" title="2.4 切片"></a>2.4 切片</h3><h4 id="2-4-1-为什么切片和区间会忽略最后一个元素"><a href="#2-4-1-为什么切片和区间会忽略最后一个元素" class="headerlink" title="2.4.1 为什么切片和区间会忽略最后一个元素"></a>2.4.1 为什么切片和区间会忽略最后一个元素</h4><p>。。。</p>
+<h4 id="2-4-2-对对象进行切片"><a href="#2-4-2-对对象进行切片" class="headerlink" title="2.4.2 对对象进行切片"></a>2.4.2 对对象进行切片</h4><p>。。。</p>
+<h4 id="2-4-3-多维切片和省略"><a href="#2-4-3-多维切片和省略" class="headerlink" title="2.4.3 多维切片和省略"></a>2.4.3 多维切片和省略</h4><p>。。。</p>
+<h4 id="2-4-4-给切片赋值"><a href="#2-4-4-给切片赋值" class="headerlink" title="2.4.4 给切片赋值"></a>2.4.4 给切片赋值</h4><p>如果把切片放在赋值语句的左边，或把它作为del操作的对象，我们就可以对序列进行嫁接、切除或就地修改操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>l =<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l[<span class="number">2</span>:<span class="number">5</span>] = [<span class="number">20</span>,<span class="number">30</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>l</span><br><span class="line">[<span class="number">0</span>,<span class="number">1</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br></pre></td></tr></table></figure>
+
+<p>如果赋值的对象是一个切片，那么赋值语句的右侧必须是一个可迭代对象。即便只有单独一个值，也要把它转换成可迭代的序列。</p>
+<h3 id="2-5-对序列使用-和"><a href="#2-5-对序列使用-和" class="headerlink" title="2.5 对序列使用+和*"></a>2.5 对序列使用+和*</h3><p>+和*都遵循这个规律，不修改原有的操作对象，而是构建一个全新的序列。</p>
+<ul>
+<li><p>建立由列表组成的列表</p>
+<p>有时我们需要初始化一个嵌套着几个列表的列表，想要达成这些目的，最好的选择是使用<strong>列表推导</strong>。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>board = [[<span class="string">&#x27;_&#x27;</span>] * <span class="number">3</span>  <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">&#x27;X&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;X&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board = [[<span class="string">&#x27;_&#x27;</span>]*<span class="number">3</span>]*<span class="number">3</span></span><br><span class="line">&gt;&gt;&gt;	weird_board </span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">&#x27;o&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>weird_board</span><br><span class="line">[[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;o&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;o&#x27;</span>],[<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;o&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-序列的增量赋值"><a href="#2-6-序列的增量赋值" class="headerlink" title="2.6 序列的增量赋值"></a>2.6 序列的增量赋值</h3><p>增量赋值运算符+=和*=的表现取决于它们的第一个操作对象。</p>
+<p>+=背后的特殊方法是__iadd__(用于就地加法)。但是如果一个类没有实现这个方法的话，Python会退一步调用__add__。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a+=b</span><br></pre></td></tr></table></figure>
+
+<p>如果a实现了__iadd__方法，就会调用这个方法。同时对可变序列来说，a会就地改动，就像调用了a..extend(b)一样。但是如果a没有实现__iadd__的话，a+=b这个表达式的效果就变得a=a+b一样了；首先计算a+b，得到一个新的对象，然后赋值给a。也就是说，在这个表达式中，变量名会不会被关联到新的对象，完全取决于这个类型有没有实现__iadd__这个方法。</p>
+<h4 id="一个关于-的谜题"><a href="#一个关于-的谜题" class="headerlink" title="一个关于+=的谜题"></a>一个关于+=的谜题</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = (<span class="number">1</span>,<span class="number">2</span>,[<span class="number">30</span>,<span class="number">40</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t[<span class="number">2</span>] += [<span class="number">50</span>,<span class="number">60</span>]</span><br><span class="line">Traceback(most recent call last):</span><br><span class="line">    File <span class="string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="number">1</span>,<span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">TypeError:<span class="string">&#x27;tuple&#x27;</span> <span class="built_in">object</span> does <span class="keyword">not</span> support item assignment</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>,[<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>str是一个例外，因为对字符串做+=实在太普遍了，所以CPython对它做了优化，为str初始化内存的时候，程序会为它留出额外的可扩展空间，因此进行增量操作的时候，并不会涉及到复制原有字符串到新位置这类操作。</li>
+</ul>
+<h3 id="2-7-list-sort方法和内置函数sorted"><a href="#2-7-list-sort方法和内置函数sorted" class="headerlink" title="2.7 list.sort方法和内置函数sorted"></a>2.7 list.sort方法和内置函数sorted</h3><ul>
+<li>list.sort方法会就地排序列表，也就是说不会把原列表复制一份。这也是这个方法的返回值是None的原因，提醒你本方法不会新建一个列表。</li>
+<li>内置函数sorted，它会新建一个列表作为返回值。这个方法可以接受任何形式的可迭代对象作为参数，甚至包括不可变序列或生成器。而不管sort接受的是怎样的参数，它最后都会返回一个列表。</li>
+</ul>
+<p>不管是list.sort方法还是sorted函数，都有两个可选的关键字参数。</p>
+<ul>
+<li><p>reverse</p>
+<p>如果被设定为True，被排序的序列里的元素会以降序输出。默认为False。</p>
+</li>
+<li><p>key</p>
+<p>一个只有一个参数的函数，这个函数会被用在序列里的每一个元素上，所产生的结果将是排序算法依赖的对比关键字。参数的默认值是恒等函数，也就是默认用元素自己的值来排序。</p>
+</li>
+</ul>
+<h3 id="2-8-用bisect来管理已排序的序列"><a href="#2-8-用bisect来管理已排序的序列" class="headerlink" title="2.8 用bisect来管理已排序的序列"></a>2.8 用bisect来管理已排序的序列</h3><p>。。。</p>
+<h3 id="2-9-当列表不是首选时"><a href="#2-9-当列表不是首选时" class="headerlink" title="2.9 当列表不是首选时"></a>2.9 当列表不是首选时</h3><h4 id="2-9-1-数组"><a href="#2-9-1-数组" class="headerlink" title="2.9.1 数组"></a>2.9.1 数组</h4><p>如果我们需要一个只包含数字的列表，那么array.array比list更高效。数组支持所有跟可变序列有关的操作，包括.pop、.insert和.extend。另外，数组还提供从文件读取和存入文件的更快的方法，如.frombytes和.tofile。</p>
+<h4 id="2-9-2-内存视图"><a href="#2-9-2-内存视图" class="headerlink" title="2.9.2 内存视图"></a>2.9.2 内存视图</h4><h4 id="2-9-3-NumPy和SciPy"><a href="#2-9-3-NumPy和SciPy" class="headerlink" title="2.9.3 NumPy和SciPy"></a>2.9.3 NumPy和SciPy</h4><h4 id="2-9-4-双向队列和其他形式的队列"><a href="#2-9-4-双向队列和其他形式的队列" class="headerlink" title="2.9.4 双向队列和其他形式的队列"></a>2.9.4 双向队列和其他形式的队列</h4><h2 id="3-字典和集合"><a href="#3-字典和集合" class="headerlink" title="3 字典和集合"></a>3 字典和集合</h2><h3 id="3-1-泛映射类型"><a href="#3-1-泛映射类型" class="headerlink" title="3.1 泛映射类型"></a>3.1 泛映射类型</h3><h3 id="3-2-字典推导"><a href="#3-2-字典推导" class="headerlink" title="3.2 字典推导"></a>3.2 字典推导</h3><p>字典推导可以从任何以键值对作为元素的可迭代对象中构建出字典。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>DIAL_CODES = [</span><br><span class="line">...		(<span class="number">86</span>,<span class="string">&#x27;China&#x27;</span>),</span><br><span class="line">    	(<span class="number">91</span>,<span class="string">&#x27;India&#x27;</span>),</span><br><span class="line">    	...</span><br><span class="line">]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>country_code = &#123;country:code <span class="keyword">for</span> code , country <span class="keyword">in</span> DIAL_CODES&#125;</span><br><span class="line">&#123;<span class="string">&#x27;China&#x27;</span>:<span class="number">86</span>,<span class="string">&#x27;India&#x27;</span>:<span class="number">91</span>,....&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;code:country.upper() <span class="keyword">for</span> country, code <span class="keyword">in</span> country_code.items() <span class="keyword">if</span> code &lt; <span class="number">66</span>&#125;</span><br><span class="line">&#123;<span class="number">1</span>:<span class="string">&#x27;UNITED STATES&#x27;</span>, <span class="number">55</span>:<span class="string">&#x27;BRAZIL&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-3-常见的映射方法"><a href="#3-3-常见的映射方法" class="headerlink" title="3.3 常见的映射方法"></a>3.3 常见的映射方法</h3><h4 id="用setdefault处理找不到的键"><a href="#用setdefault处理找不到的键" class="headerlink" title="用setdefault处理找不到的键"></a>用setdefault处理找不到的键</h4><h2 id="4-文本和字节符"><a href="#4-文本和字节符" class="headerlink" title="4 文本和字节符"></a>4 文本和字节符</h2><p>。。。</p>
+<h2 id="5-一等函数"><a href="#5-一等函数" class="headerlink" title="5 一等函数"></a>5 一等函数</h2><p>在Python中，函数是一等对象。编程语言理论家把”一等对象”定义为满足下述条件的程序实体:</p>
+<ul>
+<li>在运行时创建</li>
+<li>能赋值给变量或数据结构中的元素</li>
+<li>能作为参数传给函数</li>
+<li>能作为函数的返回结果</li>
+</ul>
+<p>在Python中，整数、字符串和字典都是一等对象——没什么特别的。</p>
+<h3 id="5-1-把函数视作对象"><a href="#5-1-把函数视作对象" class="headerlink" title="5.1 把函数视作对象"></a>5.1 把函数视作对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">factorial</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;returns n!&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> n &lt;<span class="number">2</span> <span class="keyword">else</span> n *factorial(n-<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>factorial(<span class="number">42</span>)</span><br><span class="line"><span class="number">140.</span>......</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>factoria.__doc__</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;returns n!&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(factoria)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> &#x27;<span class="title">function</span>&#x27;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>__doc__属性是用于生成对象的帮助文本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>fact = factorial</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>fact</span><br><span class="line">&lt;function factorial at 0x...&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">map</span>(factorial,<span class="built_in">range</span>(<span class="number">11</span>))</span><br><span class="line">&lt;<span class="built_in">map</span> <span class="built_in">object</span> at 0x...&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-高阶函数"><a href="#5-2-高阶函数" class="headerlink" title="5.2 高阶函数"></a>5.2 高阶函数</h3><p>接受函数为参数，或者把函数作为结果返回的函数就是高阶函数。如map函数、sorted内置函数。</p>
+<h4 id="map、filter和reduce的现代替代品"><a href="#map、filter和reduce的现代替代品" class="headerlink" title="map、filter和reduce的现代替代品"></a>map、filter和reduce的现代替代品</h4><p>由于引入了列表推导和生成器表达式，即使Python3中，map和filter还是内置函数，它们也变得没那么重要了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">map</span>(fact,<span class="built_in">range</span>(<span class="number">6</span>)))</span><br><span class="line">[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">24</span>,<span class="number">120</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[fact(n) <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>)]</span><br><span class="line">[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">24</span>,<span class="number">120</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">map</span>(factorial,<span class="built_in">filter</span>(<span class="keyword">lambda</span> n : n%<span class="number">2</span>,<span class="built_in">range</span>(<span class="number">6</span>))))</span><br><span class="line">[<span class="number">1</span>,<span class="number">6</span>,<span class="number">120</span>]</span><br><span class="line">&gt;&gt;&gt;[factorial(n) <span class="keyword">for</span> n <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>) <span class="keyword">if</span> n % <span class="number">2</span>]</span><br><span class="line">[<span class="number">1</span>,<span class="number">6</span>,<span class="number">120</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-匿名函数"><a href="#5-3-匿名函数" class="headerlink" title="5.3 匿名函数"></a>5.3 匿名函数</h3><p>lambda关键字在Python表达式内创建匿名函数。</p>
+<ul>
+<li>lambda函数的定义体中不能赋值，也不能使用while和try等Python语句。</li>
+<li>在参数列表中最适合使用匿名函数。</li>
+<li>lambda句法只是语法糖：与def语句一样，lambda表达式会创建函数对象。这是Python中几种可调用对象的一种。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>fruits = [<span class="string">&#x27;strawberry&#x27;</span>,<span class="string">&#x27;fig&#x27;</span>,<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;cherry&#x27;</span>,<span class="string">&#x27;raspberry&#x27;</span>,<span class="string">&#x27;banana&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">sorted</span>(fruits,key=<span class="keyword">lambda</span> word:word[::-<span class="number">1</span>])</span><br><span class="line">[<span class="string">&#x27;banana&#x27;</span>,<span class="string">&#x27;apple&#x27;</span>,<span class="string">&#x27;fig&#x27;</span>,<span class="string">&#x27;raspberry&#x27;</span>,<span class="string">&#x27;cherry&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-4-可调用对象"><a href="#5-4-可调用对象" class="headerlink" title="5.4 可调用对象"></a>5.4 可调用对象</h3><p>除了用户定义的函数，调用运算符(即(）)还可以应用到其他对象上。如果想判断对象能否调用，可以使用内置的callable(）函数。Python数据模型文档列出了7种可调用对象。</p>
+<ul>
+<li><p>用户定义的函数</p>
+<p>使用def语句或lambda表达式创建</p>
+</li>
+<li><p>内置函数</p>
+<p>使用C语言CPython实现的函数，如len或time.strftime。</p>
+</li>
+<li><p>内置方法</p>
+<p>使用C语言实现的方法，如dict.get。</p>
+</li>
+<li><p>方法</p>
+<p>在类的定义体中定义的函数</p>
+</li>
+<li><p>类</p>
+<p>调用类时会运行类定__new__方法创建一个实例，然后运行__init__方法，初始化实例，最后把实例返回给调用方。因为Python没有new运算符，所以调用类相当于</p>
+</li>
+</ul>
+<h3 id="5-5-用户可定义的可调用类型"><a href="#5-5-用户可定义的可调用类型" class="headerlink" title="5.5 用户可定义的可调用类型"></a>5.5 用户可定义的可调用类型</h3><p>任何Python对象都可以表现得像函数。为此，只需实现实例方法__call__。</p>
+<h3 id="5-6-函数内省"><a href="#5-6-函数内省" class="headerlink" title="5.6 函数内省"></a>5.6 函数内省</h3><p>使用dir函数可以探知函数factorial具有下列属性:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(factorial)</span><br><span class="line">[<span class="string">&#x27;__annotations__&#x27;</span>,<span class="string">&#x27;__call__&#x27;</span>,<span class="string">&#x27;__call__&#x27;</span>,<span class="string">&#x27;__closure__&#x27;</span>,<span class="string">&#x27;__code__&#x27;</span>,<span class="string">&#x27;__defaults__&#x27;</span>,<span class="string">&#x27;__delattr__&#x27;</span>,<span class="string">&#x27;__dict__&#x27;</span>,<span class="string">&#x27;__doc__&#x27;</span>,<span class="string">&#x27;__eq__&#x27;</span>,.....]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<ul>
+<li>用户定义的函数的属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>__annotations__</td>
+<td>dict</td>
+<td>参数和返回值的注解</td>
+</tr>
+<tr>
+<td>__call__</td>
+<td>method-wrapper</td>
+<td>实现()运算符：即可调用对象协议</td>
+</tr>
+<tr>
+<td>__closure__</td>
+<td>tuple</td>
+<td>函数闭包，即自由变量的绑定</td>
+</tr>
+<tr>
+<td>__code__</td>
+<td>code</td>
+<td>编译成字节码的函数元数据和函数定义体</td>
+</tr>
+<tr>
+<td>__defaults__</td>
+<td>tuple</td>
+<td>形式参数的默认值</td>
+</tr>
+<tr>
+<td>__get__</td>
+<td>method-wrapper</td>
+<td>实现只读描述协议</td>
+</tr>
+<tr>
+<td>__globals__</td>
+<td>dict</td>
+<td>函数所在模块中的全局变量</td>
+</tr>
+<tr>
+<td>__kwdefaults__</td>
+<td>dict</td>
+<td>仅限关键字形式参数的默认值</td>
+</tr>
+<tr>
+<td>__name__</td>
+<td>str</td>
+<td>函数名称</td>
+</tr>
+<tr>
+<td>__qualname__</td>
+<td>str</td>
+<td>函数的限定名称</td>
+</tr>
+</tbody></table>
+<h3 id="5-7-从定位参数到仅限关键字参数"><a href="#5-7-从定位参数到仅限关键字参数" class="headerlink" title="5.7 从定位参数到仅限关键字参数"></a>5.7 从定位参数到仅限关键字参数</h3><ul>
+<li>普通参数</li>
+<li>可变参数</li>
+<li>默认参数</li>
+<li>关键字参数</li>
+</ul>
+<p>参数的定义顺序有一定要求:普通参数、可变参数、默认参数、关键字参数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 生成HTML标签</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">tag</span>(<span class="params">name,*content,cls=<span class="literal">None</span>,**attrs</span>):</span></span><br><span class="line">   <span class="keyword">if</span> cls <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    attrs[<span class="string">&#x27;class&#x27;</span>]=cls</span><br><span class="line">   <span class="keyword">if</span> attrs:</span><br><span class="line">        attr_str = <span class="string">&#x27;&#x27;</span>.join( <span class="string">&#x27;%s=&quot;%s&quot;&#x27;</span> % (attr,value) </span><br><span class="line">                           <span class="keyword">for</span> attr,value </span><br><span class="line">                           <span class="keyword">in</span> <span class="built_in">sorted</span>(attrs.items()))</span><br><span class="line">   <span class="keyword">else</span>:</span><br><span class="line">    	attr_str = <span class="string">&#x27;&#x27;</span></span><br><span class="line">  	<span class="keyword">if</span> content:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;\n&#x27;</span>.join(<span class="string">&#x27;&lt;%s%s&gt;%s&lt;/%s&gt;&#x27;</span> %</span><br><span class="line">                        (name,attr_str,c,name) <span class="keyword">for</span> c <span class="keyword">in</span> content)</span><br><span class="line">   	<span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;%s%s /&gt;&#x27;</span> % (name,attr_str)</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tag(<span class="string">&#x27;br&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;&lt;br /&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tag(<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;&lt;p&gt;hello&lt;/p&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(tag(<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>))</span><br><span class="line">&lt;p&gt;hello&lt;/p&gt;</span><br><span class="line">&lt;p&gt;world&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tag(<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;hello&#x27;</span>,<span class="built_in">id</span>=<span class="number">33</span>)</span><br><span class="line"><span class="string">&#x27;&lt;p id=&quot;33&quot;&gt;hello&lt;/p&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(tag(<span class="string">&#x27;p&#x27;</span>,<span class="string">&#x27;hello&#x27;</span>,<span class="string">&#x27;world&#x27;</span>,cls=<span class="string">&#x27;sidebar&#x27;</span>))</span><br><span class="line">&lt;p class=&quot;sidebar&quot;&gt;hello&lt;/p&gt;</span><br><span class="line">&lt;p class=&quot;sidebar&quot;&gt;world&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tag(content=<span class="string">&quot;testing&quot;</span>,name=<span class="string">&quot;img&quot;</span>)</span><br><span class="line"><span class="string">&#x27;&lt;img content=&quot;testing&quot;/&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>my_tag = &#123;<span class="string">&#x27;name:&#x27;</span>img<span class="string">&#x27;,&#x27;</span>title<span class="string">&#x27;:&#x27;</span>Sunset Boulevard<span class="string">&#x27;,</span></span><br><span class="line"><span class="string">             	&#x27;</span>src<span class="string">&#x27;:&#x27;</span>sunset.jpg<span class="string">&#x27;,&#x27;</span>cls<span class="string">&#x27;:&#x27;</span>framed<span class="string">&#x27;&#125;</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; tag(**my_tag)</span></span><br><span class="line">&#x27;&lt;img class=&quot;framed&quot; src=&quot;sunset.jpg&quot; title =&quot;Sunset Boulevard&quot;/&gt;&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>仅限关键字参数是Python3新增的特性。在示例中，cls参数只能通过关键字参数指定，它一定不会捕获未命名的定位参数。定义函数时若想指定仅限关键字参数，要把他们放到前面有*的参数后面。如果不想支持数量不定的定位参数，但是想支持仅限关键字参数，在前面个中放一个*，如下所示:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">a,*,b</span>):</span></span><br><span class="line"><span class="meta">... </span>   <span class="keyword">return</span> a,b</span><br><span class="line">...</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f(<span class="number">1</span>,b=<span class="number">2</span>)</span><br><span class="line">(<span class="number">1</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意，仅限关键字参数不一定要有默认值，可以像上例中b那样，强制必须传入实参。</li>
+</ul>
+<h3 id="5-8-获取关于参数的信息"><a href="#5-8-获取关于参数的信息" class="headerlink" title="5.8 获取关于参数的信息"></a>5.8 获取关于参数的信息</h3><h3 id="5-9-函数注解"><a href="#5-9-函数注解" class="headerlink" title="5.9 函数注解"></a>5.9 函数注解</h3><h3 id="5-10-支持函数式编程的包"><a href="#5-10-支持函数式编程的包" class="headerlink" title="5.10 支持函数式编程的包"></a>5.10 支持函数式编程的包</h3><h4 id="5-10-1-operator模块"><a href="#5-10-1-operator模块" class="headerlink" title="5.10.1 operator模块"></a>5.10.1 operator模块</h4><h4 id="5-10-2-使用functools-partial冻结参数"><a href="#5-10-2-使用functools-partial冻结参数" class="headerlink" title="5.10.2 使用functools.partial冻结参数"></a>5.10.2 使用functools.partial冻结参数</h4><h2 id="7-函数装饰器和闭包"><a href="#7-函数装饰器和闭包" class="headerlink" title="7 函数装饰器和闭包"></a>7 函数装饰器和闭包</h2><p>函数装饰器用于在源码中，标记函数，以某种方式增强函数的行为。这是一项强大的功能，但是若想掌握，必须理解闭包。</p>
+<p>除了在装饰器中有用处之外，闭包还是回调式异步编程和函数式编程风格的基础。</p>
+<h3 id="7-1-装饰器基础知识"><a href="#7-1-装饰器基础知识" class="headerlink" title="7.1 装饰器基础知识"></a>7.1 装饰器基础知识</h3><p>装饰器是可调用的对象，其参数是另一个函数(被装饰的函数)。装饰器可能会处理被装饰的函数，然后把它返回，或者将其替换成另一个函数或可调用对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@decorate</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">target</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running target()&#x27;</span>)</span><br><span class="line"><span class="comment"># 上述代码的效果与下述写法一样:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">target</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running target()&#x27;</span>)</span><br><span class="line"></span><br><span class="line">target = decorate(target)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 装饰器通常会把函数替换成另一个函数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">deco</span>(<span class="params">func</span>):</span></span><br><span class="line">    	<span class="built_in">print</span>(<span class="string">&#x27;running inner()&#x27;</span>)</span><br><span class="line">   	<span class="keyword">return</span> inner</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>@deco</span><br><span class="line"><span class="meta">... </span><span class="function"><span class="keyword">def</span> <span class="title">target</span>():</span></span><br><span class="line"><span class="meta">... </span>   	<span class="built_in">print</span>(<span class="string">&#x27;running target()&#x27;</span>)</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>target()</span><br><span class="line">running inner()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>target</span><br><span class="line">&lt;funtion deco.&lt;<span class="built_in">locals</span>&gt;.inner at <span class="number">0x10063b598</span>&gt; //target现在是inner的引用</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>装饰器只是语法糖</li>
+<li>装饰器能把被装饰的函数替换成其他函数</li>
+<li>装饰器在加载模块时立即执行</li>
+</ul>
+<h3 id="7-2-Python何时执行装饰器"><a href="#7-2-Python何时执行装饰器" class="headerlink" title="7.2 Python何时执行装饰器"></a>7.2 Python何时执行装饰器</h3><p>装饰器的一个关键特性是，它们在被装饰的函数定义之后立即运行。这通常是在导入时(即Python加载模块时)，如</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">regsitry = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running register(%s)&#x27;</span> % func)</span><br><span class="line">    registry.append(func)</span><br><span class="line">    <span class="keyword">return</span> func</span><br><span class="line"></span><br><span class="line"><span class="meta">@register</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running f1()&#x27;</span>)</span><br><span class="line">   </span><br><span class="line"><span class="meta">@register</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f2</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running f2()&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="meta">@register</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">f3</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running f3()&#x27;</span>)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;running main()&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;registry -&gt;&#x27;</span>,registry)</span><br><span class="line">    f1()</span><br><span class="line">    f2()</span><br><span class="line">    f3()</span><br><span class="line">if__name__=<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python3 registration.py</span><br><span class="line">running register(&lt;function f1 at <span class="number">0x100631bf8</span>&gt;)</span><br><span class="line">running register(&lt;function f2 at <span class="number">0x100631c80</span>&gt;)</span><br><span class="line">running main()</span><br><span class="line">registry -&gt; [&lt;function f1 at 0x100631bf8&gt;,&lt;function f2 at 0x100631c80&gt;]</span><br><span class="line">running f1()</span><br><span class="line">running f2()</span><br><span class="line">running f3()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果导入registration.py模块(不作为脚本运行)，输出如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> registration</span><br><span class="line">running register(&lt;function f1 at <span class="number">0x10063b1e0</span>&gt;)</span><br><span class="line">running register(&lt;function f2 at <span class="number">0x10063b268</span>&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>此时查看registry的值，得到的输出如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>registration.registry</span><br><span class="line">[&lt;function f1 at <span class="number">0x10063b1e0</span>&gt;,&lt;function f2 at <span class="number">0x10063b268</span>&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>一般装饰器在真实代码中的常用模式</p>
+<ul>
+<li>装饰器通常在一个模块中定义，然后应用到其他模块中的函数上</li>
+<li>大多数装饰器会在内部定义一个函数，然后将其返回。</li>
+</ul>
+<h3 id="7-3-使用装饰器改进“策略”模式"><a href="#7-3-使用装饰器改进“策略”模式" class="headerlink" title="7.3 使用装饰器改进“策略”模式"></a>7.3 使用装饰器改进“策略”模式</h3><p>使用注册装饰器可以改进6.1节中的电商促销折扣示例。</p>
+<p>之前示例6-6的主要问题是，定义体中有函数的名称，但是best_promo用来判断哪个折扣幅度最大的promos列表中也有函数名称。这种重复是个问题，因为新增策略函数后可能会忘记把它添加到promos列表中，导致best_promo忽略新策略，而且不报错，为系统引入了不易察觉的缺陷。可以使用注册装饰器解决了这个问题。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">promos = []</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">promotion</span>(<span class="params">promo_func</span>):</span></span><br><span class="line">    promos.append(promo_func)</span><br><span class="line">    <span class="keyword">return</span> promo_func</span><br><span class="line"></span><br><span class="line"><span class="meta">@promotion</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fidelity</span>(<span class="params">order</span>):</span></span><br><span class="line">    <span class="keyword">return</span> order.total()*<span class="number">.05</span> <span class="keyword">if</span> order.customer.fidelity &gt;= <span class="number">1000</span> <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">....</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">best_promo</span>(<span class="params">order</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(promo(order) <span class="keyword">for</span> promo <span class="keyword">in</span> promos)</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-4-变量作用域规则"><a href="#7-4-变量作用域规则" class="headerlink" title="7.4 变量作用域规则"></a>7.4 变量作用域规则</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f2</span>(<span class="params">a</span>):</span></span><br><span class="line">    	<span class="built_in">print</span>(a)</span><br><span class="line">        <span class="built_in">print</span>(b)</span><br><span class="line">        b=<span class="number">9</span></span><br><span class="line">        </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f2(<span class="number">3</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">    UnboundLocalError:local variable <span class="string">&#x27;b&#x27;</span> referenced before assignment</span><br></pre></td></tr></table></figure>
+
+<p>Python编译函数的定义体时，它判断b是局部变量，因为在函数中给它赋值了。生成的字节码证实了这种判断，Python会尝试从本地环境获取b。后面调用f2(3)时，f2的定义体会获取打印局部变量a的值，但是尝试获取局部变量b的值时，发现b没有绑定值。</p>
+<p>这不是缺陷，而是设计选择：Python不要求声明变量，但是假定在函数定义体中赋值的变量是局部变量。这比JavaScript的行为好多了，JavaScript也不要求声明变量，但是如果忘记把变量声明为局部变量(使用var)，可能会在不知情的情况下获取全局变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f3</span>(<span class="params">a</span>):</span></span><br><span class="line">    	<span class="keyword">global</span> b</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="built_in">print</span>(b)</span><br><span class="line">        b = <span class="number">9</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f3(<span class="number">3</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line"><span class="number">9</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f3(<span class="number">3</span>)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">30</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line"><span class="number">30</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-5-闭包"><a href="#7-5-闭包" class="headerlink" title="7.5 闭包"></a>7.5 闭包</h3><p>闭包指<strong>延伸了作用域的函数</strong>，其中包含函数定义体中引用、但是不在定义体中定义的非全局变量。函数是不是匿名的没有关系，关键是它能访问定义体之外定义的非全局变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_averager</span>():</span></span><br><span class="line">    series = []</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">averager</span>(<span class="params">new_value</span>):</span></span><br><span class="line">        series.append(new_value)</span><br><span class="line">        total = <span class="built_in">sum</span>(series)</span><br><span class="line">        <span class="keyword">return</span> total / <span class="built_in">len</span>(series)</span><br><span class="line">    <span class="keyword">return</span> averager</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>在averager函数中，series是自由变量。指未在本地作用域中绑定的变量。</p>
+</li>
+<li><p>averager的闭包延伸到那个函数的作用域之外，包含自由变量series的绑定。</p>
+</li>
+</ul>
+<h3 id="7-6-nonlocal声明"><a href="#7-6-nonlocal声明" class="headerlink" title="7.6 nonlocal声明"></a>7.6 nonlocal声明</h3><p>前面实现make_averager函数的方法效率不高。更好的实现方式是，只存储目前的总值和元素个数，然后使用这两个数计算均值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_averager</span>():</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">averager</span>(<span class="params">new_value</span>):</span></span><br><span class="line">        count+=<span class="number">1</span></span><br><span class="line">        total+=new_value</span><br><span class="line">        <span class="keyword">return</span> total / count</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg = make_averager()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>avg(<span class="number">10</span>)</span><br><span class="line">Traceback(most recent call last):</span><br><span class="line">    ...</span><br><span class="line">UnboundLocalError:Local variable <span class="string">&#x27;count&#x27;</span> referenced before assignment</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>问题是，当count是数字或任何不可变类型时，count+=1语句其实与count=count+1一样。因此，我们在averager的定义体中为count赋值了，这会把count变成局部变量。total变量也受这个问题影响。</p>
+<ul>
+<li>上例中我们给series赋值，只是调用series.append，并把它传给sum和len。也就是说，我们利用了列表是可变的对象这一事实。</li>
+<li>但是对数字、字符串、元组等不可变类型来说，只能读取，不能更新。如果尝试重新绑定，例如count=count+1,其实会隐式创建局部变量count。这样，count就不是自由变量了，因此不会保存在闭包中。</li>
+</ul>
+<p>为了解决这个问题，Python3引入了nonlocal声明，它的作用是把变量标记为自由变量，即使在函数中为变量赋予新值了，也会变成自由变量。如果为nonlocal声明的变量赋予新值，闭包中保存的绑定会更新。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_averager</span>():</span></span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">averager</span>(<span class="params">new_value</span>):</span></span><br><span class="line">        <span class="keyword">nonlocal</span> count,total</span><br><span class="line">        count+=<span class="number">1</span></span><br><span class="line">        total+=new_value</span><br><span class="line">        <span class="keyword">return</span> total / count</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/" data-id="ckmunmoj1000bpcuu664795kp" data-title="流畅的Python" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript微软官方教程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/28/%E5%AF%B9%E8%B1%A1%E3%80%81%E7%B1%BB%E4%B8%8E%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">对象、类与面对对象编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/">书籍笔记</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B9%A6%E7%B1%8D%E7%AC%94%E8%AE%B0/%E6%B5%81%E7%A8%8B%E7%9A%84Python/">流程的Python</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Python/">Python</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/29/JavaScript%E5%BE%AE%E8%BD%AF%E5%AE%98%E6%96%B9%E6%95%99%E7%A8%8B/">JavaScript微软官方教程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/29/%E6%B5%81%E7%95%85%E7%9A%84Python/">流畅的Python</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E5%AF%B9%E8%B1%A1%E3%80%81%E7%B1%BB%E4%B8%8E%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">对象、类与面对对象编程</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2/">搭建Hexo博客</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/28/test-first-article/">test first article</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
